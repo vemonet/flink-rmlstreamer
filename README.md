@@ -17,3 +17,16 @@ docker push umids/flink-rmlstreamer:latest
 ```
 
 See [vemonet/flink-on-openshift](https://github.com/vemonet/flink-on-openshift) to deploy RMLStreamer on OpenShift/Kubernetes
+
+Start Apache Flink:
+
+```bash
+docker run -it --name flink-rmlstreamer umids/flink-rmlstreamer:latest
+```
+
+Run the RMLStreamer:
+
+```bash
+docker exec flink-rmlstreamer /opt/flink/bin/flink run -c io.rml.framework.Main /opt/RMLStreamer.jar toFile -m /mnt/mapping.rml.ttl -o /mnt/rdf_output.nq --job-name "RMLStreamer mapping.rml.ttl"
+```
+
